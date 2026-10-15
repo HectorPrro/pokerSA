@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "RÍO",
+      "hasCanvas": false,
+      "bodyTextLen": 493,
+      "bodyTextHash": "406353d48cbdf53613694123f3e759df5e1d98b8fd99e2fea8fc787c2613822f",
+      "bodyTextPrefix": "RÍO Sonido Banco 10.000 RÍO No-Limit Hold'em Seis asientos, cieg",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "RÍO",
+      "hasCanvas": false,
+      "bodyTextLen": 493,
+      "bodyTextHash": "406353d48cbdf53613694123f3e759df5e1d98b8fd99e2fea8fc787c2613822f",
+      "bodyTextPrefix": "RÍO Sonido Banco 10.000 RÍO No-Limit Hold'em Seis asientos, cieg",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}

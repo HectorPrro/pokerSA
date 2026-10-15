@@ -1,0 +1,338 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Fraunces", "Iowan Old Style", Palatino, serif;
+  --font-sans: "Outfit", system-ui, sans-serif;
+
+  --color-ink: #100e0c;
+  --color-wood: #1c1410;
+  --color-rail: #2c1f16;
+  --color-felt: #146048;
+  --color-felt-deep: #0b3a2c;
+  --color-gold: #e2b15a;
+  --color-gold-dim: #8c6a32;
+  --color-cream: #f4efe4;
+  --color-muted: #b3a38f;
+  --color-line: #3a2c22;
+  --color-card: #f7f3ea;
+  --color-heart: #b43232;
+
+  --radius: 0.8rem;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100dvh;
+    background: var(--color-ink);
+    color: var(--color-cream);
+    font-family: var(--font-sans);
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+    font-family: var(--font-display);
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
+  }
+}
+
+.room {
+  min-height: 100dvh;
+  background:
+    radial-gradient(ellipse at 50% -10%, color-mix(in srgb, var(--color-felt) 35%, transparent), transparent 46%),
+    var(--color-ink);
+}
+
+.felt-wrap {
+  width: min(100%, 60rem);
+  margin-inline: auto;
+  padding: 2.6rem 0.35rem 2rem;
+}
+
+.felt {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1.02;
+  border-radius: 999px;
+  background-color: var(--color-felt-deep);
+  background-image:
+    radial-gradient(ellipse at 50% 45%, var(--color-felt) 0%, var(--color-felt-deep) 72%),
+    repeating-linear-gradient(90deg, transparent, transparent 3px, rgb(0 0 0 / 0.04) 4px);
+  box-shadow:
+    inset 0 0 0 0.7rem #3a2718,
+    inset 0 0 0 0.95rem var(--color-gold-dim),
+    inset 0 0 4.5rem rgb(0 0 0 / 0.45);
+}
+
+@media (min-width: 768px) {
+  .felt {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+.card {
+  position: relative;
+  display: grid;
+  width: 2.55rem;
+  height: 3.55rem;
+  flex: none;
+  border-radius: 0.35rem;
+  background: var(--color-card);
+  color: var(--color-ink);
+  box-shadow: 0 0.35rem 0.7rem rgb(0 0 0 / 0.28);
+  animation: deal 420ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.card-sm {
+  width: 1.55rem;
+  height: 2.2rem;
+  border-radius: 0.25rem;
+}
+
+.card-sm .card-corner {
+  font-size: 0.55rem;
+}
+
+.card-sm .card-corner svg,
+.card-sm .card-center svg {
+  width: 0.55rem;
+  height: 0.55rem;
+}
+
+.board .card {
+  width: 2.15rem;
+  height: 3rem;
+}
+
+@media (min-width: 768px) {
+  .board .card {
+    width: 2.7rem;
+    height: 3.8rem;
+  }
+}
+
+.card-lg {
+  width: 3.15rem;
+  height: 4.45rem;
+}
+
+@media (min-width: 768px) {
+  .card-lg {
+    width: 4rem;
+    height: 5.6rem;
+  }
+}
+
+.card-red {
+  color: var(--color-heart);
+}
+
+.card-back {
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      var(--color-felt-deep),
+      var(--color-felt-deep) 4px,
+      #145c44 4px,
+      #145c44 8px
+    );
+  border: 2px solid var(--color-gold-dim);
+  color: transparent;
+}
+
+.card-corner {
+  position: absolute;
+  top: 0.15rem;
+  left: 0.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.card-lg .card-corner {
+  font-size: 0.95rem;
+}
+
+.card-corner svg {
+  width: 0.7rem;
+  height: 0.7rem;
+}
+
+.card-lg .card-corner svg {
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
+.card-corner-br {
+  top: auto;
+  left: auto;
+  right: 0.2rem;
+  bottom: 0.15rem;
+  transform: rotate(180deg);
+}
+
+.card-center {
+  align-self: center;
+  justify-self: center;
+}
+
+.card-center svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.card-lg .card-center svg {
+  width: 1.7rem;
+  height: 1.7rem;
+}
+
+.chip {
+  display: inline-flex;
+  min-width: 1.7rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 3px dashed rgb(255 255 255 / 0.75);
+  padding: 0.15rem 0.4rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-ink);
+  box-shadow: 0 0.2rem 0.35rem rgb(0 0 0 / 0.35);
+}
+
+.chip-white { background: var(--color-cream); }
+.chip-red { background: #c44747; color: var(--color-cream); }
+.chip-green { background: #1f7a49; color: var(--color-cream); }
+.chip-black { background: #1a1a1a; color: var(--color-cream); border-color: var(--color-gold); }
+.chip-purple { background: #69448f; color: var(--color-cream); }
+.chip-gold { background: var(--color-gold); }
+
+.seat {
+  position: absolute;
+  z-index: 2;
+  width: 5.6rem;
+  transform: translate(-50%, -50%);
+}
+
+@media (min-width: 768px) {
+  .seat {
+    width: 7.25rem;
+  }
+}
+
+.plate {
+  border-radius: 0.7rem;
+  border: 1px solid rgb(226 177 90 / 0.28);
+  background: rgb(16 14 12 / 0.82);
+  padding: 0.35rem 0.4rem 0.4rem;
+  text-align: center;
+  box-shadow: 0 0.6rem 1.2rem rgb(0 0 0 / 0.28);
+}
+
+.plate-turn {
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 2px rgb(226 177 90 / 0.45), 0 0.6rem 1.2rem rgb(0 0 0 / 0.28);
+}
+
+.plate-win {
+  border-color: var(--color-gold);
+  background: #2a2114;
+}
+
+.dealer {
+  display: grid;
+  width: 1.15rem;
+  height: 1.15rem;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-size: 0.62rem;
+  font-weight: 700;
+}
+
+.dock {
+  position: sticky;
+  bottom: 0;
+  z-index: 5;
+  border-top: 1px solid var(--color-line);
+  background: color-mix(in srgb, var(--color-wood) 92%, transparent);
+  padding: 0.75rem 0.85rem calc(0.85rem + env(safe-area-inset-bottom));
+  backdrop-filter: blur(10px);
+}
+
+.btn {
+  min-height: 3rem;
+  border-radius: 0.7rem;
+  border: 1px solid var(--color-line);
+  background: var(--color-rail);
+  color: var(--color-cream);
+  padding: 0.55rem 0.75rem;
+  font-weight: 600;
+  transition: scale 150ms ease-out, background-color 150ms ease-out;
+}
+
+.btn:active:not(:disabled) {
+  scale: 0.96;
+}
+
+.btn:disabled {
+  opacity: 0.45;
+}
+
+.btn-gold {
+  border-color: transparent;
+  background: var(--color-gold);
+  color: var(--color-ink);
+}
+
+.btn-ghost {
+  background: transparent;
+}
+
+@keyframes deal {
+  from {
+    opacity: 0;
+    transform: translateY(-0.8rem) rotate(-8deg) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    animation: none;
+  }
+
+  .btn {
+    transition: none;
+  }
+}
